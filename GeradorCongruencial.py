@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import time
 
 
@@ -19,7 +20,7 @@ class GeradorLinear:
         self.__seed = seed
         self.__total_time = 0.0
         
-    def rand(self, quantity):
+    def rand(self, quantity, file_name):
         __i = 0
         __temp = 0
         __last_numbers = []                       
@@ -37,7 +38,7 @@ class GeradorLinear:
     
         self.__total_time = __t2 - __t1
 
-        self.__save_data(__last_numbers)
+        self.__save_data(__last_numbers, file_name)
 
         return __last_numbers
 
@@ -47,15 +48,15 @@ class GeradorLinear:
     def __MOD(self , number, divisor):
         return number % divisor
             
-    def __save_data(self, numbers):
+    def __save_data(self, numbers, file_name):
         
         try:
-            myFile = open("CRIALEO.TXT", "w+")
+            myFile = open(file_name + ".TXT", "w+")
             for n in numbers:
                 myFile.write(str(n) + "\n")
 
         except:
-            raise Exception("Could´t open the file")
+            raise Exception("Could not open the file")
         finally:
             myFile.close()
 
