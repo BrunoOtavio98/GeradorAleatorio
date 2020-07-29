@@ -31,7 +31,7 @@ class GeradorLinear:
         
         for __i in range(1, quantity):
             __integer.append( self.__MOD( __integer[__i - 1] * self.__a , self.__m ) ) 
-            __last_numbers.append(  __integer[ len( __integer ) - 1 ] / self.__m  )
+            __last_numbers.append(  __integer[ __i ] / self.__m  )
 
         __t2 = time.time()
     
