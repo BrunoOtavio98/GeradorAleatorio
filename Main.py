@@ -1,5 +1,5 @@
 import GeradorCongruencial as gc
-
+import TesteIntervalo as ti
 
 def main():
     #Ordem argumentos a, m, c
@@ -14,6 +14,11 @@ def main():
     geradorSAS = gc.GeradorLinear(397204094, 2**31-1, 0, 500)
     list_gerador = geradorSAS.rand(1000000, "CRIALEO_GeradorSAS")
     print("Tempo total geradorSAS: ", geradorSAS.getTotalTime())
+    
+    digito = 1
+    tIntervalo1 = ti.TesteIntervalo("CRIALEO_Gerador1.TXT", digito)
+    tIntervaloDEC = ti.TesteIntervalo("CRIALEO_GeradorDEC.TXT", digito)
+    tIntervaloSAS = ti.TesteIntervalo("CRIALEO_GeradorSAS.TXT", digito)
   
 if __name__ == "__main__":
     main()
