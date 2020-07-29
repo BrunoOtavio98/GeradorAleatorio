@@ -56,7 +56,7 @@ class TesteIntervalo:
         for n_intervals in self.__freq:
             self.__pi.append(n_intervals / sum(self.__freq))
         
-        #Somatorio da probabilidade das freq G(X)
+        #Somatorio da probabilidade das freq F(X)
         #Somatorio da probabilidade de se obter um intervalo de comprimento K G(X)
         #Calcula o valor absoluto da diferença entre F(X) e G(X)
         self.__GX.append(self.__pi[0])
