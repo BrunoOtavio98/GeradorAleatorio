@@ -31,11 +31,11 @@ class GeradorLinear:
         __integer.append(self.__seed)
         
         for __i in range(1, quantity):
-            __integer.append( self.__MOD( __integer[__i - 1] * self.__a , self.__m ) ) 
+            __integer.append( self.__MOD( __integer[__i - 1] * self.__a  + self.__c, self.__m ) ) 
             __last_numbers.append(  __integer[ __i ] / self.__m  )
 
         __t2 = time.time()
-    
+       
         self.__total_time = __t2 - __t1
 
         self.__save_data(__last_numbers, file_name)
