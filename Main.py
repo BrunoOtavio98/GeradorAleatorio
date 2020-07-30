@@ -1,9 +1,10 @@
 import GeradorCongruencial as gc
 import TesteIntervalo as ti
+import math 
 
 def main():
     #Ordem argumentos a, m, c
-    gerador1 = gc.GeradorLinear(16807, 2**31-1, 0, 500)
+    gerador1 = gc.GeradorLinear( 2921256 , 2**89 - 1, 0, 500)
     list_gerador = gerador1.rand(1000000, "CRIALEO_Gerador1")
     print("Tempo total gerador1: ", gerador1.getTotalTime())
 
