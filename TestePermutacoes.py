@@ -43,12 +43,11 @@ class TestePermutacoes:
             G[i] = G[i - 1] + pi[i]
 
         Fx[0] = fx
-        print(fx)
         for i in range(1, size): 
             Fx[i] = Fx[i - 1] + fx
 
         for i in range(0, size):
-            fg[i] = abs(Fx[i] - G[i]) 
+            fg[i] = abs(Fx[i] - G[i])
 
         fg.sort()
         ks_calc = fg[size - 1]
@@ -57,13 +56,17 @@ class TestePermutacoes:
 
         print("Ks_5: " + str(ks_5))
         print("Ks_calc: " + str(ks_calc))
-        print("Ho: " + str(Ho))
+
+        if(Ho):
+            print("Aceita Ho")
+        else:
+            print("Não aceita Ho")
 
         self.saveResult(Ho, Fo, pi, G, fx, Fx, fg)
 
 
     def saveResult(self, Ho, Fo, pi, G, fx, Fx, fg): 
-        message = "Erro ao criar o arquivo"   
+        message = "Erro ao criar o arquivo"  
         try:
             if(not path.exists(self.__output_folder)):
                 mkdir(self.__output_folder)
@@ -93,7 +96,7 @@ class TestePermutacoes:
             myFile.write("\n")
 
             myFile.write("fx,")
-            myFile.write(str(f) + ",")
+            myFile.write(str(fx) + ",")
             myFile.write("\n")
 
             myFile.write("fg,")
@@ -113,10 +116,7 @@ class TestePermutacoes:
             raise Exception("Could not open the file")
             return False
         finally: 
-            print(message)
-
-        
-            
+            print(message) 
 
     def permutate(self, lines):
         a = [0, 0, 0, 0, 0, 0]
@@ -147,7 +147,6 @@ class TestePermutacoes:
 
         return a
             
-
     def readFileAsArray(self):
         lines = False
         try:
@@ -158,5 +157,4 @@ class TestePermutacoes:
             raise Exception("Could not open the file")
         finally:          
             return lines
-
 
