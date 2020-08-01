@@ -1,7 +1,4 @@
-import GeradorCongruencial as gc
 import TesteCorrida as tc
-import TesteIntervalo as ti
-import TesteUniformidade as tu
 
 import math 
 
@@ -28,14 +25,7 @@ def main():
     corrida3.calculaProbabilidadesCorridas()
     print("Tempo total geradorSAS: ", geradorSAS.getTotalTime())
     
-    digito = 1
-    ti.TesteIntervalo("CRIALEO_Gerador1.TXT", digito)
-    ti.TesteIntervalo("CRIALEO_GeradorDEC.TXT", digito)
-    ti.TesteIntervalo("CRIALEO_GeradorSAS.TXT", digito)
-
-    tu.TesteUniformidade("CRIALEO_Gerador1.TXT", 10, False)
-    tu.TesteUniformidade("CRIALEO_GeradorDEC.TXT", 10, False)
-    tu.TesteUniformidade("CRIALEO_GeradorSAS.TXT", 10, False)
+    
 
 
    
