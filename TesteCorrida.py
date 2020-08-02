@@ -4,8 +4,10 @@ from collections import Counter
 
 class Corrida:
    
-    def __init__(self, sequencia):
-        self.__sequencia = sequencia
+    def __init__(self, fileName):
+        self.__sequencia = []
+        self.__fileName = fileName
+        self.calculaProbabilidadesCorridas()
          
     def corridaAscendente(self, sequencia):
         __asc = []
@@ -63,9 +65,26 @@ class Corrida:
                 
         return __freqDesc
 
-    def calculaProbabilidadesCorridas(self):     
+
+    def contaRepeticao(self, lista):
+        i = 0
+        frequencia = []
+        maximo = max(lista)
+        for i in range(0, maximo+1):
+            frequencia.append(0)
+        i = 0
+        while i < len(lista):
+            aux = lista[i]
+            frequencia[aux] += 1
+            i+=1
+        return frequencia
+
+    def calculaProbabilidadesCorridas(self):   
+        self.__sequencia = self.__readFile(self.__fileName)  
         asc = self.corridaAscendente(self.__sequencia)
-        frequenciaAsc = Counter(asc)
+        frequenciaAsc = self.contaRepeticao(asc)
+        
+
         i = 0
         sumAsc = 0
         sumP = 0
@@ -75,21 +94,26 @@ class Corrida:
         fxAsc = []
         fAsc = []
         difAsc = []
-        while i <= len(frequenciaAsc): 
-            sumAsc += frequenciaAsc[i]
-            fxAsc.append(frequenciaAsc[i] / math.factorial(frequenciaAsc[i] + 1))
+
+        while i < len(frequenciaAsc):
+            fxAsc.append((i+1)/math.factorial(i+2))
             sumF += fxAsc[i]
             fAsc.append(sumF)
+            sumAsc += frequenciaAsc[i]
             i += 1
-
-        i = 0
-        while i <= len(frequenciaAsc):
+        
+        i = 1
+        while i < len(frequenciaAsc):
             pAsc.append(frequenciaAsc[i]/sumAsc)
+            i += 1
+        
+        i = 0
+        while i < len(pAsc):
             sumP += pAsc[i]
             gAsc.append(sumP)
             difAsc.append(abs(fAsc[i]-gAsc[i]))
             i += 1
-
+  
         k_asc_calc = max(difAsc)
         k_asc_5 = (1.36/math.sqrt(sumAsc))
 
@@ -99,7 +123,8 @@ class Corrida:
             print("Rejeita h0 em ascendente", k_asc_calc, " > ", k_asc_5)
 
         desc = self.corridaDescendente(self.__sequencia)
-        frequenciaDesc = Counter(desc)
+        frequenciaDesc = self.contaRepeticao(desc)
+
         i = 0
         sumDesc = 0
         sumP = 0
@@ -109,16 +134,21 @@ class Corrida:
         fxDesc = []
         fDesc = []
         difDesc = []
-        while i <= len(frequenciaDesc): 
-            sumDesc += frequenciaDesc[i]
-            fxDesc.append(frequenciaDesc[i] / math.factorial(frequenciaDesc[i] + 1))
+        
+        while i < len(frequenciaDesc):
+            fxDesc.append((i+1)/math.factorial(i+2))
             sumF += fxDesc[i]
             fDesc.append(sumF)
+            sumDesc += frequenciaDesc[i]
             i += 1
-
-        i = 0
-        while i <= len(frequenciaDesc):
+        
+        i = 1
+        while i < len(frequenciaDesc):
             pDesc.append(frequenciaDesc[i]/sumDesc)
+            i += 1
+        
+        i = 0
+        while i < len(pDesc):
             sumP += pDesc[i]
             gDesc.append(sumP)
             difDesc.append(abs(fDesc[i]-gDesc[i]))
@@ -131,3 +161,15 @@ class Corrida:
             print("Aceita h0 em descendente", k_desc_calc, " < ", k_desc_5)
         else:
             print("Rejeita h0 em descendente", k_desc_calc, " > ", k_desc_5)
+
+
+    def __readFile(self, filename):
+        lines = False
+        try:
+            myFile = open(filename + ".TXT", "r")
+            lines = myFile.readlines()
+            myFile.close()
+        except:
+            raise Exception("Could not open the file")
+        finally:          
+            return lines
