@@ -123,7 +123,7 @@ class Corrida:
             print("Rejeita h0 em ascendente", k_asc_calc, " > ", k_asc_5)
 
         desc = self.corridaDescendente(self.__sequencia)
-        frequenciaDesc = self.contaRepeticao(desc)
+        frequenciaDesc = self.contaRepeticao(desc) 
 
         i = 0
         sumDesc = 0
