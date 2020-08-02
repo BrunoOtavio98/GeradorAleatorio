@@ -162,7 +162,7 @@ class Corrida:
         else:
             print("Rejeita h0 em descendente", k_desc_calc, " > ", k_desc_5)
 
-
+ 
     def __readFile(self, filename):
         lines = False
         try:
