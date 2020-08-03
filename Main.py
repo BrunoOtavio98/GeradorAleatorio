@@ -36,6 +36,9 @@ def main():
     tests.append("SAS")
     tests.append("1")
 
+    num1 = int(input("Digite o digito para o Teste do Intervalo: "))
+    num2 = int(input("Digite o numero de intervalos para o Teste de Uniforminade: "))
+
     i = 0
     print("")
     for t in tests:
@@ -46,7 +49,7 @@ def main():
         print("")
 
         print("Teste do intervalo ")
-        num1 = int(input("Digite o digito: "))
+        
         ti.TesteIntervalo(testsFile[i] + ".TXT", num1)
         print("")
 
@@ -57,10 +60,11 @@ def main():
         print("")
 
         print("Teste de uniformidade")
-        num2 = int(input("Digite o numero de intervalos: "))
+        
         tu.TesteUniformidade(testsFile[i] + ".TXT", num2, False)
         print("")
         i = i + 1
+    input("Precione qualquer tecla para terminar...")
     
 
 
