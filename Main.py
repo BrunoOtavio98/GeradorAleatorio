@@ -6,6 +6,11 @@ from TestePermutacoes import TestePermutacoes
 import math 
 
 def main():
+
+    print("Grupo: \nBruno Otávio \nJesuan Peres\nPedro A Brandalise\nWellington Lima\nWilliam Falinski\n")
+
+    print("Gerando números pseudo-aleatorios. Esse processo pode demorar um pouco...\n")
+
     #Ordem argumentos a, m, c
     geradorNOVO = gc.GeradorLinear( 2921256 , 2**89 - 1, 0, 500)
     list_gerador = geradorNOVO.rand(1000000, "CRIALEO_GeradorNovo")
@@ -64,7 +69,7 @@ def main():
         tu.TesteUniformidade(testsFile[i] + ".TXT", num2, False)
         print("")
         i = i + 1
-    input("Precione qualquer tecla para terminar...")
+    input("Precione Enter para terminar...")
     
 
 
